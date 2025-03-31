@@ -1,0 +1,43 @@
+.dnd-container {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    background: #f4f4f4;
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  .dnd-container button {
+    padding: 10px;
+    background: #d9534f;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .dnd-container button.active {
+    background: #5cb85c;
+  }
+  
+  .dnd-scheduler {
+    margin-top: 10px;
+  }
+  
+  .dnd-scheduler label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  
+  .dnd-scheduler input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
