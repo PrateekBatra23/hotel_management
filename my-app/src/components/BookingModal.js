@@ -2,6 +2,13 @@ import React from "react";
 import "./BookingModal.css";
 
 const BookingModal = ({ show, onClose, details, onConfirm }) => {
+  const handleConfirmBooking = () => {
+    // Simply call onConfirm function passed from parent to confirm booking
+    onConfirm();  // On confirming, the parent component (HotelManagement) will handle localStorage updates and navigation.
+
+    onClose();  // Close modal
+  };
+
   if (!show) return null;
 
   return (
@@ -17,7 +24,7 @@ const BookingModal = ({ show, onClose, details, onConfirm }) => {
 
         <div className="modal-actions">
           <button onClick={onClose}>Modify Details</button>
-          <button onClick={onConfirm}>Confirm Booking</button>
+          <button onClick={handleConfirmBooking}>Confirm Booking</button>
         </div>
       </div>
     </div>

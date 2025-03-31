@@ -7,6 +7,15 @@ const Laundry = () => {
   const [specialInstructions, setSpecialInstructions] = useState("");
 
   const handleSchedule = () => {
+    const laundryRequest = {
+      date: selectedDate,
+      timeSlot: timeSlot,
+      specialInstructions: specialInstructions,
+    };
+
+    // Save the laundry request to localStorage
+    localStorage.setItem("laundryRequest", JSON.stringify(laundryRequest));
+
     alert(`Laundry scheduled on ${selectedDate} at ${timeSlot}`);
   };
 
@@ -14,7 +23,11 @@ const Laundry = () => {
     <div className="laundry-container">
       <h2>Schedule Laundry Pickup</h2>
       <label>Pickup Date:</label>
-      <input type="date" value={selectedDate} onChange={(e) => setSelectedDate(e.target.value)} />
+      <input
+        type="date"
+        value={selectedDate}
+        onChange={(e) => setSelectedDate(e.target.value)}
+      />
 
       <label>Pickup Time Slot:</label>
       <select value={timeSlot} onChange={(e) => setTimeSlot(e.target.value)}>
@@ -25,9 +38,14 @@ const Laundry = () => {
       </select>
 
       <label>Special Instructions:</label>
-      <textarea value={specialInstructions} onChange={(e) => setSpecialInstructions(e.target.value)} />
+      <textarea
+        value={specialInstructions}
+        onChange={(e) => setSpecialInstructions(e.target.value)}
+      />
 
-      <button className="schedule-button" onClick={handleSchedule}>Schedule Laundry</button>
+      <button className="schedule-button" onClick={handleSchedule}>
+        Schedule Laundry
+      </button>
     </div>
   );
 };

@@ -59,6 +59,7 @@ const HotelManagement = () => {
   const [showModal, setShowModal] = useState(false);
   const [checkInDate, setCheckInDate] = useState("");
   const [checkOutDate, setCheckOutDate] = useState("");
+  const [bookings, setBookings] = useState(JSON.parse(localStorage.getItem("bookings")) || []); // Manage bookings state
   const navigate = useNavigate();
 
   const calculateDays = () => {
@@ -81,20 +82,27 @@ const HotelManagement = () => {
   };
 
   const confirmBooking = () => {
-    console.log("Confirming Booking:", selectedRoom); // ✅ Debugging
+    const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")); // Get current user
+  
+    const newBooking = {
+      roomName: selectedRoom.name, // Fixed key from 'room' to 'roomName' to match stored data
+      checkinDate: checkInDate,
+      checkoutDate: checkOutDate,
+      adults: adultCount,
+      children: childrenCount,
+      totalCost: calculatePrice(selectedRoom),
+      email: loggedInUser?.email || "unknown", // 🔥 Add guest email
+    };
+  
+    // Only update bookings when the user confirms
+    const updatedBookings = [...bookings, newBooking];
+    setBookings(updatedBookings); // Update state
+    localStorage.setItem("bookings", JSON.stringify(updatedBookings)); // Save to localStorage
+  
     setShowModal(false);
-    navigate("/booking-confirmation", {
-      state: {
-        room: selectedRoom,
-        checkInDate,
-        checkOutDate,
-        adultCount,
-        childrenCount,
-        totalCost: calculatePrice(selectedRoom),
-        days: calculateDays(),
-      },
-    });
+    navigate("/booking-confirmation", { state: newBooking });
   };
+  
 
   return (
     <>
@@ -132,7 +140,7 @@ const HotelManagement = () => {
       <BookingModal
         show={showModal}
         onClose={() => setShowModal(false)}
-        onConfirm={confirmBooking}
+        onConfirm={confirmBooking}  // Confirm booking only adds to localStorage here
         details={{
           checkinDate: checkInDate,
           checkoutDate: checkOutDate,

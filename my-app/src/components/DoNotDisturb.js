@@ -1,10 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./DoNotDisturb.css";
 
 const DoNotDisturb = () => {
   const [isDndEnabled, setIsDndEnabled] = useState(false);
   const [scheduleStart, setScheduleStart] = useState("");
   const [scheduleEnd, setScheduleEnd] = useState("");
+
+  // Load DND state from localStorage when the component mounts
+  useEffect(() => {
+    const storedDndStatus = JSON.parse(localStorage.getItem("dndStatus"));
+    if (storedDndStatus) {
+      setIsDndEnabled(storedDndStatus.isEnabled);
+      setScheduleStart(storedDndStatus.scheduleStart || "");
+      setScheduleEnd(storedDndStatus.scheduleEnd || "");
+    }
+  }, []);
+
+  // Save DND state to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem(
+      "dndStatus",
+      JSON.stringify({
+        isEnabled: isDndEnabled,
+        scheduleStart: scheduleStart,
+        scheduleEnd: scheduleEnd
+      })
+    );
+  }, [isDndEnabled, scheduleStart, scheduleEnd]);
 
   const toggleDnd = () => {
     if (isDndEnabled) {
@@ -26,10 +48,18 @@ const DoNotDisturb = () => {
 
       <div className="dnd-scheduler">
         <label>Start Time:</label>
-        <input type="time" value={scheduleStart} onChange={(e) => setScheduleStart(e.target.value)} />
+        <input
+          type="time"
+          value={scheduleStart}
+          onChange={(e) => setScheduleStart(e.target.value)}
+        />
         
         <label>End Time:</label>
-        <input type="time" value={scheduleEnd} onChange={(e) => setScheduleEnd(e.target.value)} />
+        <input
+          type="time"
+          value={scheduleEnd}
+          onChange={(e) => setScheduleEnd(e.target.value)}
+        />
       </div>
 
       <button onClick={toggleDnd} className={isDndEnabled ? "active" : ""}>

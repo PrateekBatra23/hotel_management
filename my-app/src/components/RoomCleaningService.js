@@ -6,6 +6,14 @@ const RoomCleaningService = () => {
   const [cleaningTime, setCleaningTime] = useState("");
 
   const handleCleaningRequest = () => {
+    const cleaningRequest = {
+      date: cleaningDate,
+      time: cleaningTime,
+    };
+
+    // Save the room cleaning request to localStorage
+    localStorage.setItem("roomCleaningRequest", JSON.stringify(cleaningRequest));
+
     alert(`Room cleaning scheduled on ${cleaningDate} at ${cleaningTime}`);
   };
 
@@ -13,9 +21,17 @@ const RoomCleaningService = () => {
     <div className="cleaning-container">
       <h2>Schedule Room Cleaning</h2>
       <label>Cleaning Date:</label>
-      <input type="date" value={cleaningDate} onChange={(e) => setCleaningDate(e.target.value)} />
+      <input
+        type="date"
+        value={cleaningDate}
+        onChange={(e) => setCleaningDate(e.target.value)}
+      />
       <label>Cleaning Time:</label>
-      <input type="time" value={cleaningTime} onChange={(e) => setCleaningTime(e.target.value)} />
+      <input
+        type="time"
+        value={cleaningTime}
+        onChange={(e) => setCleaningTime(e.target.value)}
+      />
       <button onClick={handleCleaningRequest}>Schedule Cleaning</button>
     </div>
   );
