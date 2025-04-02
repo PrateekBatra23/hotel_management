@@ -1,52 +1,51 @@
+/* Remove global background */
+body {
+    background: none;
+}
+
+/* Laundry Page Background */
 .laundry-container {
-    max-width: 500px;
-    margin: 50px auto;
+    background: url('../pics/Laundry.jpeg') no-repeat center center;
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Centered Box */
+.laundry-box {
+    background: rgba(255, 255, 255, 0.85); /* Light transparent white background */
     padding: 20px;
-    background-color: #f8f9fa;
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
     text-align: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    width: 350px;  /* Fixed width */
 }
 
-.laundry-container h2 {
-    margin-bottom: 20px;
-    color: #234670;
-}
-
-.laundry-container label {
+/* Form inputs */
+.laundry-box input,
+.laundry-box textarea {
     display: block;
-    margin-top: 10px;
-    font-weight: bold;
-}
-
-.laundry-container input,
-.laundry-container select,
-.laundry-container textarea {
     width: 100%;
-    padding: 10px;
-    margin-top: 5px;
+    margin: 10px 0;
+    padding: 8px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 16px;
 }
 
-.laundry-container textarea {
-    height: 80px;
-    resize: none;
-}
-
-.schedule-button {
-    margin-top: 20px;
-    background-color: #234670;
+/* Button styling */
+.laundry-box button {
+    padding: 10px;
+    background: #234670;
     color: white;
     border: none;
-    padding: 10px 15px;
-    font-size: 18px;
-    border-radius: 5px;
     cursor: pointer;
-    transition: background 0.3s;
+    margin-top: 10px;
+    width: 100%;
+    border-radius: 5px;
 }
 
-.schedule-button:hover {
-    background-color: #1b3553;
+.laundry-box button:hover {
+    background: #1a3552;
 }

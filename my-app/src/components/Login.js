@@ -1,21 +1,23 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./Login.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from || "/"; 
 
   const handleLogin = () => {
     const users = JSON.parse(localStorage.getItem("users")) || [];
     const user = users.find(user => user.email === email && user.password === password);
 
     if (user) {
-      // Store logged-in user in localStorage
       localStorage.setItem("loggedInUser", JSON.stringify(user));
       alert(`Welcome, ${user.name}!`);
-      navigate("/"); // Redirect to homepage or dashboard after login
+
+      navigate(from); 
     } else {
       alert("Invalid credentials! Please try again.");
     }

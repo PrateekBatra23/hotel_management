@@ -1,43 +1,39 @@
+.dnd-bg {
+  background: url("../pics/DND.jpeg") no-repeat center center/cover;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 60px; /* Push content below navbar */
+}
+
 .dnd-container {
-    max-width: 400px;
-    margin: auto;
-    padding: 20px;
-    background: #f4f4f4;
-    border-radius: 8px;
-    text-align: center;
-  }
-  
-  .dnd-container button {
-    padding: 10px;
-    background: #d9534f;
-    color: white;
-    border: none;
-    cursor: pointer;
-    margin-top: 10px;
-    width: 100%;
-    border-radius: 5px;
-    font-size: 16px;
-  }
-  
-  .dnd-container button.active {
-    background: #5cb85c;
-  }
-  
-  .dnd-scheduler {
-    margin-top: 10px;
-  }
-  
-  .dnd-scheduler label {
-    display: block;
-    margin-top: 10px;
-    font-weight: bold;
-  }
-  
-  .dnd-scheduler input {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
+  max-width: 400px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.dnd-container button {
+  padding: 12px;
+  width: 100%;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+  background: #d9534f;
+  color: white;
+}
+
+.dnd-container button.active {
+  background: #5cb85c;
+}
+
+.dnd-container button:hover {
+  opacity: 0.8;
+}

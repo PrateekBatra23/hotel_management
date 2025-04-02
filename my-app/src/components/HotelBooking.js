@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./HotelManagement.css";
-import BookingModal from "./BookingModal"; // ✅ Ensure this is correctly imported
+import BookingModal from "./BookingModal";
 import standardImg from "../pics/Standard.jpeg";
 import luxuryImg from "../pics/Luxury.jpeg";
 import specialImg from "../pics/Special.jpeg";
@@ -52,14 +52,13 @@ const rooms = [
 ];
 
 const HotelManagement = () => {
-  const [days, setDays] = useState(1);
   const [adultCount, setAdultCount] = useState(1);
   const [childrenCount, setChildrenCount] = useState(0);
   const [selectedRoom, setSelectedRoom] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [checkInDate, setCheckInDate] = useState("");
   const [checkOutDate, setCheckOutDate] = useState("");
-  const [bookings, setBookings] = useState(JSON.parse(localStorage.getItem("bookings")) || []); // Manage bookings state
+  const [bookings, setBookings] = useState(JSON.parse(localStorage.getItem("bookings")) || []);
   const navigate = useNavigate();
 
   const calculateDays = () => {
@@ -70,77 +69,102 @@ const HotelManagement = () => {
   };
 
   const calculatePrice = (room) => {
-    if (!room) return 0; // ✅ Prevents crash when no room is selected
+    if (!room) return 0;
     let extraAdult = adultCount > 1 ? adultCount - 1 : 0;
     return calculateDays() * (room.basePrice + extraAdult * room.extraAdult + childrenCount * room.extraChild);
   };
 
   const handleBookNow = (room) => {
-    console.log("Booking Room:", room); // ✅ Debugging
+    const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+    if (!loggedInUser) {
+      alert("You must be logged in to book a room!");
+      navigate("/login", { state: { from: "/room-booking" } });
+      return;
+    }
     setSelectedRoom(room);
-    setShowModal(true); // ✅ Show modal instead of navigating immediately
+    setShowModal(true);
   };
 
   const confirmBooking = () => {
-    const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")); // Get current user
-  
+    const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
     const newBooking = {
-      roomName: selectedRoom.name, // Fixed key from 'room' to 'roomName' to match stored data
+      roomName: selectedRoom.name,
+      roomImage: selectedRoom.image, 
       checkinDate: checkInDate,
       checkoutDate: checkOutDate,
       adults: adultCount,
       children: childrenCount,
       totalCost: calculatePrice(selectedRoom),
-      email: loggedInUser?.email || "unknown", // 🔥 Add guest email
+      guestName: loggedInUser?.name || "Unknown Guest", 
+      email: loggedInUser?.email || "unknown",
     };
   
-    // Only update bookings when the user confirms
     const updatedBookings = [...bookings, newBooking];
-    setBookings(updatedBookings); // Update state
-    localStorage.setItem("bookings", JSON.stringify(updatedBookings)); // Save to localStorage
+    setBookings(updatedBookings);
+    localStorage.setItem("bookings", JSON.stringify(updatedBookings));
   
     setShowModal(false);
-    navigate("/booking-confirmation", { state: newBooking });
+    navigate("/booking-confirmation", { state: newBooking }); 
   };
   
 
   return (
     <>
       <div className="hotel-container">
+        
+        <h1 className="page-heading">My-Hotel Booking</h1>
+
+        
         <div className="booking-input">
-          <label>Check-in Date:</label>
+          <label>Check-in:</label>
           <input type="date" onChange={(e) => setCheckInDate(e.target.value)} />
-          <label>Check-out Date:</label>
+          
+          <label>Check-out:</label>
           <input type="date" onChange={(e) => setCheckOutDate(e.target.value)} />
+          
           <label>Adults:</label>
           <input type="number" min="1" value={adultCount} onChange={(e) => setAdultCount(Number(e.target.value))} />
+          
           <label>Children:</label>
           <input type="number" min="0" value={childrenCount} onChange={(e) => setChildrenCount(Number(e.target.value))} />
         </div>
 
+        
         <div className="room-container">
           {rooms.map((room, index) => (
             <div className="room-card" key={index}>
               <img src={room.image} alt={room.name} className="room-image" />
-              <h2>{room.name}</h2>
-              <ul>
-                {room.details.map((detail, i) => (
-                  <li key={i}>{detail}</li>
-                ))}
-              </ul>
-              <p>Base Price (1 Adult / Day): ₹{room.basePrice}</p>
-              <p>Your Total Cost: ₹{calculatePrice(room)}</p>
-              <button className="book-button" onClick={() => handleBookNow(room)}>Book Now</button>
+              <div className="room-info">
+                <h2 className="room-title">{room.name}</h2>
+                <ul>
+                  {room.details.map((detail, i) => (
+                    <li key={i}>{detail}</li>
+                  ))}
+                </ul>
+                <p className="price">Base Price (1 Adult / Day): ₹{room.basePrice}</p>
+                <p className="total-cost">Your Total Cost: ₹{calculatePrice(room)}</p>
+                <button className="book-button" onClick={() => handleBookNow(room)}>Book Now</button>
+              </div>
             </div>
           ))}
         </div>
+
+        
+        <div className="amenities-section">
+          <h2>Luxury Amenities</h2>
+          <div className="amenities-list">
+            <div className="amenity-item">🌊 Infinity Pool</div>
+            <div className="amenity-item">🍽️ Fine Dining</div>
+            <div className="amenity-item">💆 Spa & Wellness</div>
+            <div className="amenity-item">🏋️ Gym & Fitness</div>
+          </div>
+        </div>
       </div>
 
-      {/* ✅ Move modal OUTSIDE the hotel-container to prevent layout issues */}
       <BookingModal
         show={showModal}
         onClose={() => setShowModal(false)}
-        onConfirm={confirmBooking}  // Confirm booking only adds to localStorage here
+        onConfirm={confirmBooking}
         details={{
           checkinDate: checkInDate,
           checkoutDate: checkOutDate,

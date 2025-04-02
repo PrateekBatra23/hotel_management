@@ -1,0 +1,357 @@
+*{
+    margin: 0%;
+    padding:0%;
+    font-family:sans-serif;
+
+}
+
+html,body{
+    height: 100%;
+    width: 100%;
+}
+#main{
+    height: 100%;
+    width: 100%;
+    /* background-color:bisque; */
+}
+/* =================================================header_start=========================================================================== */
+
+#header{
+    background-color:greenyellow;
+    width: 100%;
+    height: 10%;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 5px;
+    font-size: 15px;
+
+}
+
+/* all icons and hotel name css */
+/*----------------------------------------------------> only for icons and hotel name<-------------------------------------------------- */
+.corners{
+    font-size: 5px;
+    font-weight: bolder;
+    /* position: relative;
+    left: 10px; */
+    font-size: 20px;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+}
+
+#login_icon{
+    position: relative;
+    left: 190px;
+    background-color: blanchedalmond;
+    /* if need i will give  */
+    /* border-radius: 50%; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#login_icon:hover{
+    background-color: rgb(236, 181, 99);
+}
+#menu_icon{
+    position: relative;
+    right: 100px;
+    background-color: blanchedalmond;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+#menu_icon:hover{
+    background-color: rgb(236, 181, 99);
+}
+#hotel_name{
+    position: relative;
+    right: 150px;
+    text-align: center;
+}
+#hotel_name:hover{
+    color:  rgb(236, 181, 99);
+     /*if necessary  */
+    /* padding: 10px; */
+
+}
+#book_tag{
+    position: relative;
+    left: 90px;
+    background-color: blanchedalmond;
+    border: 1px solid blanchedalmond ;
+    /* if need i will give  */
+    /* border-radius: 15px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+#book_tag:hover{
+    background-color: rgb(236, 181, 99);
+}
+
+/*----------------------------------------------------> only for icons and hotel name<-------------------------------------------------- */
+
+
+/* ----------------------------------------------> only for naming given in center<----------------------------------------------------  */
+.center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.center:hover{
+    color: rgb(236, 181, 99);
+    padding: 1px;
+}
+#hotels{
+    position: relative;
+    left: 140px;
+}
+#special_offer{
+    position: relative;
+    left: 50px ;
+}
+#about_hotel{
+    position: relative;
+    right: 36px;
+}
+#experience{
+    position: relative;
+    right: 130px;
+}
+
+/* ----------------------------------------------> only for naming given in center<--------------------------------------------------  */
+/* ----------------------------------fake header color has to be removed at the end acording to choice : ----------------------------  */
+#fake_header{
+    background-color:rgb(86, 86, 239);
+    width: 100%;
+    height: 10%;
+}
+
+/* ===================================================header_complete=========================================================================== */
+
+/* ===================================================front_page=========================================================================== */
+
+#front_page{
+    height: 90%;
+    width: 100%;
+    background-color:bisque;
+}
+
+#image{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* ===================================================front_page_end=========================================================================== */
+/* ===================================================page 2 start=========================================================================== */
+
+#page2{
+    height: 90%;
+    width: 100%;
+    background-color:lightblue;
+}
+#para{
+    color: maroon;
+    text-align: center;
+    padding: 200px;
+}
+
+/* ===================================================page 2 end=========================================================================== */
+/* ===================================================page 3 start=========================================================================== */
+#page3{
+    background-color: darkkhaki;
+    height: 90%;
+    width: 100%;
+
+}
+#image1{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+/* ===================================================page 3 end=========================================================================== */
+/* ===================================================page 4 start=========================================================================== */
+
+#page4{
+    background-color: darkslateblue;
+    height: 90%;
+    width: 100%;
+    display:flex ;
+    justify-content: center;
+    align-items: center;
+}
+#box1{
+    background-color: tomato;
+    width: 30%;
+    height: 75%;
+    margin: 5px;
+    border-radius: 5px;
+}
+#box1_symbol{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-left: 300px;
+    margin-top: -55px;
+}
+
+#box2{
+    background-color:yellow;
+    width: 30%;
+    height: 75%;
+    margin: 5px;
+    border-radius: 5px;
+
+}
+#box2_symbol{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-left: 300px;
+    margin-top: -55px;
+}
+#box2_part2_symbol{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 210px;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+#box3{
+    background-color: peachpuff;
+    width: 30%;
+    height: 75%;
+    margin: 5px;
+    border-radius: 5px;
+}
+#box3_symbol{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-left: 300px;
+    margin-top: -55px;
+
+}
+#box3_part2_symbol{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-left: 240px;
+    margin-bottom: 20px;
+}
+.image4{
+    height: 80%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.para_for_4_page{
+    margin-left:10px;
+}
+
+/* for hover :  box:-1*/
+
+#box1_symbol1:hover{
+    color: bisque;
+
+}
+#box1_symbol2:hover{
+    color: bisque;
+
+}
+#box1_symbol3:hover{
+    color: bisque;
+
+}
+#box1_symbol4:hover{
+    color: bisque;
+
+}
+
+/* for hover :  box:-2*/
+
+#box2_symbol1:hover{
+    color: bisque;
+}
+#box2_symbol2:hover{
+    color: bisque;
+}
+#box2_symbol3:hover{
+    color: bisque;
+}
+#box2_symbol4:hover{
+    color: bisque;
+}
+#box2_symbol5:hover{
+    color: bisque;
+}
+
+/* for hover :  box:-3*/
+
+
+#box3_symbol1:hover{
+    color: bisque;
+}
+#box3_symbol2:hover{
+    color: bisque;
+
+}
+#box3_symbol3:hover{
+    color: bisque;
+}
+#box3_symbol4:hover{
+    color: bisque;
+}
+#box3_symbol5:hover{
+    color: bisque;
+}
+#box3_symbol6:hover{
+    color: bisque;
+}
+
+/* ===================================================page 4 end=========================================================================== */
+/* ===================================================page 5 start=========================================================================== */
+
+#page5{
+    background-color: aliceblue;
+    height: 100%;
+    width: 100%;
+}
+
+#heading_5pg_1{
+    position: relative;
+    left: 235px;
+    top: 250px;
+}
+
+#para_5pg{
+    text-align: center;
+    padding: 280px;
+    position: relative;
+    right: 60px;
+    line-height: 25px;
+    margin-right: 400px;
+}
+#features_icons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px black solid;
+    
+}

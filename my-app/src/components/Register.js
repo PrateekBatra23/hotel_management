@@ -11,16 +11,16 @@ const Register = () => {
   const handleRegister = () => {
     const newUser = { name, email, password };
     
-    // Get existing users from localStorage or initialize an empty array
+    
     const users = JSON.parse(localStorage.getItem("users")) || [];
     
-    // Check if email already exists
+  
     if (users.some(user => user.email === email)) {
       alert("Email already registered! Try logging in.");
       return;
     }
     
-    // Save the new user
+    
     users.push(newUser);
     localStorage.setItem("users", JSON.stringify(users));
 

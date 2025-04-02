@@ -5,27 +5,40 @@ import "./BookingConfirmation.css";
 const BookingConfirmation = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const data = location.state || {};
+  const booking = location.state || {};
+
+  console.log("Booking Details:", booking); 
+
+  if (!booking.roomName) {
+    return <h2>No Booking Found. Please book a room first.</h2>;
+  }
 
   return (
-    <div className="booking-confirmation-container">
-      <h1>Booking Confirmed!</h1>
-      {data.room ? (
-        <div className="booking-details">
-          <h2>{data.room.name}</h2>
-          <img src={data.room.image} alt={data.room.name} className="room-image" />
-          <p><strong>Check-in:</strong> {data.checkInDate || "N/A"}</p>
-          <p><strong>Check-out:</strong> {data.checkOutDate || "N/A"}</p>
-          <p><strong>Adults:</strong> {data.adultCount || "N/A"}</p>
-          <p><strong>Children:</strong> {data.childrenCount || "N/A"}</p>
-          <p><strong>Total Nights:</strong> {data.days || "N/A"}</p>
-          <p><strong>Total Cost:</strong> ₹{data.totalCost || "N/A"}</p>
+    <div className="confirmation-container">
+      <h1>Booking Confirmed! 🎉</h1>
+
+      <div className="booking-details">
+      
+        <img 
+          src={booking.roomImage || "https://via.placeholder.com/300"} 
+          alt={booking.roomName} 
+          className="room-image" 
+        />
+
+        <div className="details-section">
+          <h2>{booking.roomName}</h2>
+          <p><strong>Guest Name:</strong> {booking.guestName || "N/A"}</p>
+          <p><strong>Check-in:</strong> {booking.checkinDate}</p>
+          <p><strong>Check-out:</strong> {booking.checkoutDate}</p>
+          <p><strong>Adults:</strong> {booking.adults} | <strong>Children:</strong> {booking.children}</p>
+          <p><strong>Booking Date:</strong> {new Date().toLocaleDateString()}</p>
+          <p><strong>Total Cost:</strong> ₹{booking.totalCost}</p>
         </div>
-      ) : (
-        <p>No booking details available.</p>
-      )}
-      <button className="confirm-btn" onClick={() => navigate("/")}>Back to Home</button>
+      </div>
+
+      <button onClick={() => navigate("/")} className="home-button">Back to Home</button>
     </div>
   );
 };
+
 export default BookingConfirmation;

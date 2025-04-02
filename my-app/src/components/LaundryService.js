@@ -1,53 +1,82 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Laundry.css";
 
-const Laundry = () => {
-  const [selectedDate, setSelectedDate] = useState("");
-  const [timeSlot, setTimeSlot] = useState("");
-  const [specialInstructions, setSpecialInstructions] = useState("");
+const LaundryService = () => {
+  const [scheduledLaundry, setScheduledLaundry] = useState(null);
 
-  const handleSchedule = () => {
-    const laundryRequest = {
-      date: selectedDate,
-      timeSlot: timeSlot,
-      specialInstructions: specialInstructions,
+  useEffect(() => {
+    const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+    if (!loggedInUser) return;
+
+    const storedLaundry = JSON.parse(localStorage.getItem("laundryRequests")) || [];
+    const userLaundry = storedLaundry.find(req => req.email === loggedInUser.email);
+    if (userLaundry) {
+      setScheduledLaundry(userLaundry);
+    }
+  }, []);
+
+  const handleDelete = () => {
+    const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+    if (!loggedInUser) return;
+
+    let storedLaundry = JSON.parse(localStorage.getItem("laundryRequests")) || [];
+    storedLaundry = storedLaundry.filter(req => req.email !== loggedInUser.email);
+    localStorage.setItem("laundryRequests", JSON.stringify(storedLaundry));
+    
+    setScheduledLaundry(null);
+  };
+
+  const handleSchedule = (e) => {
+    e.preventDefault();
+    const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+    if (!loggedInUser) {
+      alert("Please log in first!");
+      return;
+    }
+
+    const newLaundry = {
+      email: loggedInUser.email,
+      date: e.target.date.value,
+      time: e.target.time.value,
+      instructions: e.target.instructions.value || "None",
     };
 
-    // Save the laundry request to localStorage
-    localStorage.setItem("laundryRequest", JSON.stringify(laundryRequest));
+    let storedLaundry = JSON.parse(localStorage.getItem("laundryRequests")) || [];
+    storedLaundry = storedLaundry.filter(req => req.email !== loggedInUser.email);
+    storedLaundry.push(newLaundry);
+    localStorage.setItem("laundryRequests", JSON.stringify(storedLaundry));
 
-    alert(`Laundry scheduled on ${selectedDate} at ${timeSlot}`);
+    setScheduledLaundry(newLaundry);
   };
 
   return (
     <div className="laundry-container">
-      <h2>Schedule Laundry Pickup</h2>
-      <label>Pickup Date:</label>
-      <input
-        type="date"
-        value={selectedDate}
-        onChange={(e) => setSelectedDate(e.target.value)}
-      />
-
-      <label>Pickup Time Slot:</label>
-      <select value={timeSlot} onChange={(e) => setTimeSlot(e.target.value)}>
-        <option value="">Select Time</option>
-        <option value="Morning (9 AM - 12 PM)">Morning (9 AM - 12 PM)</option>
-        <option value="Afternoon (1 PM - 4 PM)">Afternoon (1 PM - 4 PM)</option>
-        <option value="Evening (6 PM - 9 PM)">Evening (6 PM - 9 PM)</option>
-      </select>
-
-      <label>Special Instructions:</label>
-      <textarea
-        value={specialInstructions}
-        onChange={(e) => setSpecialInstructions(e.target.value)}
-      />
-
-      <button className="schedule-button" onClick={handleSchedule}>
-        Schedule Laundry
-      </button>
+      <div className="laundry-box">
+        <h2>Laundry Service</h2>
+        {scheduledLaundry ? (
+          <>
+            <p><strong>Pickup Date:</strong> {scheduledLaundry.date}</p>
+            <p><strong>Time Slot:</strong> {scheduledLaundry.time}</p>
+            <p><strong>Special Instructions:</strong> {scheduledLaundry.instructions}</p>
+            <button onClick={handleDelete}>Cancel Laundry Request</button>
+          </>
+        ) : (
+          <form onSubmit={handleSchedule}>
+            <label>Select Date:</label>
+            <input type="date" name="date" required />
+            
+            <label>Select Time:</label>
+            <input type="time" name="time" required />
+            
+            <label>Special Instructions (Optional):</label>
+            <textarea name="instructions" placeholder="E.g., separate white clothes"></textarea>
+            
+            <button type="submit">Schedule Laundry</button>
+          </form>
+        )}
+      </div>
     </div>
   );
 };
 
-export default Laundry;
+export default LaundryService;

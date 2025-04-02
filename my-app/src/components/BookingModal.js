@@ -3,10 +3,9 @@ import "./BookingModal.css";
 
 const BookingModal = ({ show, onClose, details, onConfirm }) => {
   const handleConfirmBooking = () => {
-    // Simply call onConfirm function passed from parent to confirm booking
-    onConfirm();  // On confirming, the parent component (HotelManagement) will handle localStorage updates and navigation.
-
-    onClose();  // Close modal
+    
+    onConfirm();  
+    onClose(); 
   };
 
   if (!show) return null;

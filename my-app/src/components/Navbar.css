@@ -2,59 +2,79 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgb(14, 50, 60);
-    padding: 15px 30px;
-    font-family: Arial, sans-serif;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    color: aliceblue;
-}
-
-.menu_icon {
-    font-size: 24px;
-    cursor: pointer;
-}
-
-.hotel_name {
-    font-size: 24px;
-    font-weight: bold;
-}
-
-.nav_links {
-    display: flex;
-    gap: 20px;
-    font-size: 18px;
-}
-
-.nav_links span {
-    cursor: pointer;
-    transition: color 0.3s;
-}
-
-.nav_links span:hover {
-    color: darkgreen;
-}
-
-.user_section {
+    background-color: #2c3e50;
+    padding: 10px 20px;
+    color: white;
+  }
+  
+  .nav-left {
     display: flex;
     align-items: center;
-    gap: 15px;
-}
-
-.login_icon {
-    font-size: 24px;
-    cursor: pointer;
-}
-
-.book_button {
-    background-color: darkgreen;
+  }
+  
+  .menu-button {
+    font-size: 20px;
+    padding: 5px 10px;
+    background-color: transparent;
     color: white;
-    padding: 10px 15px;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.book_button:hover {
-    background-color: green;
-}
+    margin-right: 15px;
+  }
+  
+  .hotel-name {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .nav-right {
+    display: flex;
+    align-items: center;
+  }
+  
+  .auth-button, .dropbtn {
+    background-color: #3498db;
+    border: none;
+    color: white;
+    padding: 8px 15px;
+    margin-left: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  
+  .auth-button:hover, .dropbtn:hover {
+    background-color: #2980b9;
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 0;
+    background-color: white;
+    min-width: 120px;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .dropdown-content button {
+    background-color: white;
+    color: black;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+  }
+  
+  .dropdown-content button:hover {
+    background-color: #ecf0f1;
+  }
+  

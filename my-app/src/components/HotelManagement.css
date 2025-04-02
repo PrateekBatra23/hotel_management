@@ -1,78 +1,101 @@
+/* General Page Styling */
 .hotel-container {
-    max-width: 1100px;
+    max-width: 1200px;
     margin: auto;
     padding: 20px;
+    font-family: 'Poppins', sans-serif;
 }
 
+/* Page Heading */
+.page-heading {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-bottom: 3px solid #ffcc00;
+    display: inline-block;
+}
+
+/* Booking Inputs - Horizontal Layout */
 .booking-input {
     display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
     align-items: center;
-    justify-content: center;
-    background-color: #f5f5f5;
-    padding: 20px;
+    justify-content: space-between;
+    background-color: #f8f8f8;
+    padding: 15px;
     border-radius: 10px;
-    margin-bottom: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 25px;
 }
 
 .booking-input label {
     font-weight: bold;
+    margin-right: 5px;
 }
 
 .booking-input input {
     padding: 8px;
     border-radius: 5px;
     border: 1px solid #ccc;
+    width: 140px;
 }
 
+/* Room Cards */
 .room-container {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
+    flex-direction: column;
+    gap: 25px;
 }
 
 .room-card {
+    display: flex;
     background: white;
-    border-radius: 10px;
+    border-radius: 12px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     padding: 15px;
-    max-width: 400px;
-    text-align: center;
+    align-items: center;
+    transition: 0.3s;
+}
+
+.room-card:hover {
+    transform: scale(1.02);
 }
 
 .room-image {
-    width: 100%;
-    border-radius: 8px;
-    height: 220px;
+    width: 250px;
+    height: 180px;
     object-fit: cover;
+    border-radius: 12px;
+    margin-right: 15px;
 }
 
-.room-details {
-    padding: 10px;
+.room-info {
+    flex-grow: 1;
 }
 
-.amenities {
-    background-color: #f9f9f9;
-    padding: 10px;
-    border-radius: 8px;
-    margin-top: 10px;
+.room-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+    background: #ffcc00;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
 }
 
-.amenities h3 {
-    font-size: 18px;
-    margin-bottom: 5px;
-}
-
-.amenities ul {
+.room-info ul {
     list-style: none;
     padding: 0;
+    font-size: 14px;
+    color: #555;
 }
 
-.amenities li {
-    font-size: 14px;
-    margin-bottom: 3px;
+.price, .total-cost {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ff5722;
 }
 
 .book-button {
@@ -82,10 +105,38 @@
     padding: 10px 15px;
     font-size: 16px;
     cursor: pointer;
-    border-radius: 5px;
-    margin-top: 10px;
+    border-radius: 8px;
+    transition: 0.3s;
 }
 
 .book-button:hover {
     background-color: #218838;
+}
+
+/* Luxury Amenities Section */
+.amenities-section {
+    background: #f5f5f5;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.amenities-section h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.amenities-list {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.amenity-item {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
 }
