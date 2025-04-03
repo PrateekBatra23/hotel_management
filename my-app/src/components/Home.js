@@ -1,72 +1,101 @@
-import React from "react";
-import "./Home.css";
-import RoomCard from "./RoomCard";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSpa, faDumbbell, faLeaf } from "@fortawesome/free-solid-svg-icons";
-import { faFacebook, faInstagram, faXTwitter, faYoutube, faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
+import React from 'react';
+import { 
+  FaWifi, 
+  FaTv, 
+  FaNotesMedical, 
+  FaSwimmingPool, 
+  FaLaptop, // Replacing FaComputer
+  FaGamepad, 
+  FaSpa, 
+  FaDumbbell, 
+  FaLeaf 
+} from 'react-icons/fa';
+import './Home.css';
 
 const Home = () => {
-  const rooms = [
-    { image: "/photos/14.jpg", type: "Standard", size: "30" },
-    { image: "/photos/15.jpg", type: "Luxury", size: "50" },
-    { image: "/photos/16.jpg", type: "Special", size: "70" },
-  ];
-
   return (
     <div id="main">
-
       {/* Front Page */}
       <div id="front_page">
-        <img id="image" src="/photos/12.jpg" alt="Hotel View" />
+        <img id="image" src={require("../pics/12.jpg")} alt="Hotel exterior"/>
       </div>
 
       {/* Page 2 */}
       <div id="page2">
-        <p id="para">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi neque soluta tempore iusto ducimus voluptatem...
-        </p>
+        <div id="para">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit...
+        </div>
       </div>
 
       {/* Page 3 */}
       <div id="page3">
-        <img id="image1" src="/photos/13.jpg" alt="Hotel Interior" />
+        <img id="image1" src={require("../pics/13.jpg")} alt="Hotel lobby"/>
       </div>
 
-      {/* Rooms Section */}
+      {/* Page 4 - Rooms */}
       <div id="page4">
-        {rooms.map((room, index) => (
-          <RoomCard key={index} imageSrc={room.image} type={room.type} size={room.size} />
-        ))}
+        <div id="box1">
+          <img className="image4" src={require("../pics/14.jpg")} alt="Standard room"/>
+          <div className="para_for_4_page">
+            <p>Standard Room</p>
+            <p>30 square meter</p>
+          </div>
+          <div id="box1_symbol">
+            <div style={{ order: 4 }}><FaWifi /></div>
+            <div style={{ order: 3 }}><FaTv /></div>
+            <div style={{ order: 2 }}><FaNotesMedical /></div>
+            <div style={{ order: 1 }}><FaSwimmingPool /></div>
+          </div>
+        </div>
+
+        <div id="box2">
+          <img className="image4" src={require("../pics/15.jpg")} alt="Luxury room"/>
+          <div className="para_for_4_page">
+            <p>Luxury Room</p>
+            <p>50 square meter</p>
+          </div>
+          <div id="box2_symbol">
+            <div style={{ order: 4 }}><FaWifi /></div>
+            <div style={{ order: 3 }}><FaTv /></div>
+            <div style={{ order: 2 }}><FaLaptop /></div> {/* Changed from FaComputer */}
+            <div style={{ order: 1 }}><FaSwimmingPool /></div>
+          </div>
+          <div id="box2_part2_symbol">
+            <div><FaNotesMedical /></div>
+          </div>
+        </div>
+
+        <div id="box3">
+          <img className="image4" src={require("../pics/16.jpg")} alt="Special room"/>
+          <div className="para_for_4_page">
+            <p>Special Room</p>
+            <p>70 square meter</p>
+          </div>
+          <div id="box3_symbol">
+            <div style={{ order: 4 }}><FaWifi /></div>
+            <div style={{ order: 3 }}><FaTv /></div>
+            <div style={{ order: 2 }}><FaLaptop /></div> {/* Changed from FaComputer */}
+            <div style={{ order: 1 }}><FaSwimmingPool /></div>
+          </div>
+          <div id="box3_part2_symbol">
+            <div><FaGamepad /></div>
+            <div><FaNotesMedical /></div>
+          </div>
+        </div>
       </div>
 
-      {/* Features Section */}
+      {/* Page 5 - Features */}
       <div id="page5">
-        <h1>Features</h1>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit...</p>
-        <div className="features_icons">
-          <FontAwesomeIcon icon={faSpa} />
-          <FontAwesomeIcon icon={faDumbbell} />
-          <FontAwesomeIcon icon={faLeaf} />
-        </div>
-      </div>
-
-      {/* Footer */}
-      <div id="footer">
-        <div id="our_company_title">
-          <p>About Us</p>
-          <p>Contact Us</p>
-          <p>Investors</p>
-          <p>Travel Diaries</p>
-          <p>Awards</p>
-        </div>
-        <p>&copy;2025 My Hotel, All rights reserved</p>
-        <p>Follow Us</p>
-        <div className="social_media">
-          <FontAwesomeIcon icon={faFacebook} />
-          <FontAwesomeIcon icon={faInstagram} />
-          <FontAwesomeIcon icon={faXTwitter} />
-          <FontAwesomeIcon icon={faYoutube} />
-          <FontAwesomeIcon icon={faLinkedinIn} />
+        <h1 id="heading_5pg_1">Features</h1>
+        <div id="page5_box">
+          <div id="page5_para">
+            <p>Lorem ipsum dolor sit amet consectetur...</p>
+          </div>
+          <div id="features_icons">
+            <div id="spa_icon"><FaSpa /></div>
+            <div id="gym_icon"><FaDumbbell /></div>
+            <div id="nature_icon"><FaLeaf /></div>
+          </div>
         </div>
       </div>
     </div>
