@@ -12,6 +12,7 @@ import Register from "./components/Register";
 import GuestProfile from "./components/GuestProfile";
 import Home from "./components/Home";
 import Footer from "./components/Footer"; // 
+import StorageViewer from './components/StorageViewer';
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -33,6 +34,7 @@ function App() {
           <Route path="/laundry" element={<LaundryService />} />
           <Route path="/room-cleaning" element={<RoomCleaningService />} />
           <Route path="/do-not-disturb" element={<DoNotDisturb />} />
+          <Route path="/storage-viewer" element={<StorageViewer />} />
         </Routes>
       </div>
 

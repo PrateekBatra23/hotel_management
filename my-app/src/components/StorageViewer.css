@@ -1,0 +1,121 @@
+.storage-viewer {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+  }
+  
+  .storage-header {
+    margin-bottom: 30px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+  }
+  
+  .controls {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+  }
+  
+  .search-input {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    flex-grow: 1;
+    max-width: 300px;
+  }
+  
+  button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .back-button {
+    background: #6c757d;
+    color: white;
+  }
+  
+  .refresh-button {
+    background: #17a2b8;
+    color: white;
+  }
+  
+  .clear-all-button {
+    background: #dc3545;
+    color: white;
+  }
+  
+  .clear-item-button {
+    background: #ffc107;
+    color: #212529;
+  }
+  
+  .storage-items {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .storage-item {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .item-header h3 {
+    margin: 0;
+    color: #343a40;
+  }
+  
+  .item-content {
+    background: white;
+    padding: 15px;
+    border-radius: 4px;
+    border: 1px solid #dee2e6;
+    overflow-x: auto;
+  }
+  
+  .array-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .array-item {
+    background: #f1f1f1;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  
+  .array-item-header {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #495057;
+  }
+  
+  pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin: 0;
+    font-family: monospace;
+  }
+  
+  .empty-state {
+    text-align: center;
+    padding: 40px;
+    color: #6c757d;
+    font-size: 1.2em;
+  }
