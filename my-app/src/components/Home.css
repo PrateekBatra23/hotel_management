@@ -1,9 +1,9 @@
+/* home.css - Optimized for the React Component */
 * {
-    margin: 0%;
-    padding: 0%;
-    font-family: sans-serif;
-    max-width: 100vw;
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
+    font-family: sans-serif;
 }
 
 html, body {
@@ -13,254 +13,176 @@ html, body {
 }
 
 #main {
-    height: 100%;
     width: 100%;
+    min-height: 100vh;
 }
 
-/* ===================================================front_page=========================================================================== */
+/* Front Page Styles */
 #front_page {
-    height: 90%;
+    height: 90vh;
     width: 100%;
-    background-color: bisque;
 }
 
 #image {
-    height: 100%;
     width: 100%;
+    height: 100%;
     object-fit: cover;
 }
 
-/* ===================================================front_page_end=========================================================================== */
-
-/* ===================================================page 2 start=========================================================================== */
+/* Page 2 Styles */
 #page2 {
-    height: 90%;
     width: 100%;
+    min-height: 90vh;
     background-color: lightblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #para {
     color: maroon;
     text-align: center;
-    padding: 200px;
+    padding: 2rem;
+    max-width: 800px;
+    line-height: 1.6;
 }
 
-/* ===================================================page 2 end=========================================================================== */
-
-/* ===================================================page 3 start=========================================================================== */
+/* Page 3 Styles */
 #page3 {
-    background-color: darkkhaki;
-    height: 90%;
     width: 100%;
+    height: 90vh;
+    background-color: darkkhaki;
 }
 
 #image1 {
-    height: 100%;
     width: 100%;
+    height: 100%;
     object-fit: cover;
 }
 
-/* ===================================================page 3 end=========================================================================== */
-
-/* ===================================================page 4 start=========================================================================== */
+/* Page 4 - Rooms Section */
 #page4 {
-    background-color: darkslateblue;
-    height: 90%;
     width: 100%;
+    min-height: 90vh;
+    background-color: darkslateblue;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 2rem;
 }
 
-#box1 {
-    background-color: tomato;
+#box1, #box2, #box3 {
     width: 30%;
-    height: 75%;
-    margin: 5px;
+    min-width: 300px;
+    height: 75vh;
     border-radius: 5px;
+    overflow: hidden;
+    position: relative;
 }
 
-#box1_symbol {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    margin-left: 300px;
-    margin-top: -55px;
-}
-
-#box2 {
-    background-color: yellow;
-    width: 30%;
-    height: 75%;
-    margin: 5px;
-    border-radius: 5px;
-}
-
-#box2_symbol {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    margin-left: 300px;
-    margin-top: -55px;
-}
-
-#box2_part2_symbol {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 210px;
-    margin-bottom: 20px;
-    gap: 10px;
-}
-
-#box3 {
-    background-color: peachpuff;
-    width: 30%;
-    height: 75%;
-    margin: 5px;
-    border-radius: 5px;
-}
-
-#box3_symbol {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    margin-left: 300px;
-    margin-top: -55px;
-}
-
-#box3_part2_symbol {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    margin-left: 240px;
-    margin-bottom: 20px;
-}
+#box1 { background-color: tomato; }
+#box2 { background-color: yellow; }
+#box3 { background-color: peachpuff; }
 
 .image4 {
-    height: 80%;
     width: 100%;
+    height: 80%;
     object-fit: cover;
 }
 
 .para_for_4_page {
-    margin-left: 10px;
+    padding: 1rem;
+    font-weight: bold;
+    color: #333;
 }
 
-/* for hover: box-1 */
-#box1_symbol1:hover {
+/* Icons in room boxes */
+[id*="box"]_symbol {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+    font-size: 1.5rem;
+}
+
+#box1_symbol, #box2_symbol, #box3_symbol {
+    margin-top: -55px;
+}
+
+#box2_part2_symbol, #box3_part2_symbol {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+/* Hover effects for icons */
+[id*="symbol"] div:hover {
     color: bisque;
+    cursor: pointer;
+    transform: scale(1.2);
+    transition: transform 0.2s ease;
 }
 
-#box1_symbol2:hover {
-    color: bisque;
-}
-
-#box1_symbol3:hover {
-    color: bisque;
-}
-
-#box1_symbol4:hover {
-    color: bisque;
-}
-
-/* for hover: box-2 */
-#box2_symbol1:hover {
-    color: bisque;
-}
-
-#box2_symbol2:hover {
-    color: bisque;
-}
-
-#box2_symbol3:hover {
-    color: bisque;
-}
-
-#box2_symbol4:hover {
-    color: bisque;
-}
-
-#box2_symbol5:hover {
-    color: bisque;
-}
-
-/* for hover: box-3 */
-#box3_symbol1:hover {
-    color: bisque;
-}
-
-#box3_symbol2:hover {
-    color: bisque;
-}
-
-#box3_symbol3:hover {
-    color: bisque;
-}
-
-#box3_symbol4:hover {
-    color: bisque;
-}
-
-#box3_symbol5:hover {
-    color: bisque;
-}
-
-#box3_symbol6:hover {
-    color: bisque;
-}
-
-/* ===================================================page 4 end=========================================================================== */
-
-/* ===================================================page 5 start=========================================================================== */
+/* Page 5 - Features Section */
 #page5 {
-    background-color: aliceblue;
-    height: 120%;
     width: 100%;
+    min-height: 120vh;
+    background-color: aliceblue;
+    position: relative;
+    padding: 2rem;
 }
 
 #heading_5pg_1 {
-    position: relative;
-    left: 235px;
-    top: 250px;
+    text-align: center;
+    margin: 2rem 0;
+    font-size: 2.5rem;
 }
 
 #page5_para {
     text-align: center;
-    padding: 280px;
-    position: relative;
-    right: 60px;
-    line-height: 25px;
-    margin-right: 400px;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    line-height: 1.6;
 }
 
 #features_icons {
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    border: 3px black solid;
-    gap: 20px;
-    padding: 10px;
-    position: relative;
-    left: 900px;
-    bottom: 410px;
-    height: 100px;
-    width: 400px;
+    justify-content: center;
+    gap: 3rem;
+    padding: 2rem;
+    border: 3px solid black;
+    max-width: 500px;
+    margin: 2rem auto;
 }
 
-#spa_icon:hover {
-    color: rgb(159, 148, 148);
+#features_icons div {
+    font-size: 2.5rem;
+    transition: all 0.3s ease;
 }
 
-#gym_icon:hover {
+#features_icons div:hover {
     color: rgb(159, 148, 148);
+    transform: scale(1.2);
 }
 
-#nature_icon:hover {
-    color: rgb(159, 148, 148);
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    #box1, #box2, #box3 {
+        width: 45%;
+    }
 }
-/* ===================================================page 5 end=========================================================================== */
+
+@media (max-width: 768px) {
+    #box1, #box2, #box3 {
+        width: 90%;
+    }
+    
+    #features_icons {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+}
